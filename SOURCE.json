@@ -24,10 +24,12 @@
     "Anotherdirectorylistssamebrand/addresswithdifferentphone9852875671; chosenphone9153929484matches2email-containingcards.",
     "Mailboxdeliverabilitynottested."
   ],
-  "contacted_evidence": "NewbusinessoutsideCollaboration; absentfromknownlocalcontactedexamples; parentmustcheckYandexSentbeforecreatingdraft.",
+  "contacted_evidence": "Root read all 17 Yandex Sent messages visible as of 2026-10-30 and compared this exact email; no sent message to it was found. No mail was sent by the agents.",
   "no_site_evidence_urls": [
     "https://atelie.moscow/"
   ],
+  "approved_for_site_copy_by_root": true,
+  "approved_for_draft_only": true,
   "template": "lepata-atelier-design-demo",
   "template_commit": "2617d97431b663fa417961ffd5e7881d0bee6275",
   "prepared_on": "2026-10-30",
