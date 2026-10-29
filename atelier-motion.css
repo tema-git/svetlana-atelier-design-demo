@@ -1,0 +1,86 @@
+/* The complete story stays in one viewport while the garment is assembled. */
+.atelier-motion { --am-gap: 14px; --am-frame-height: calc(100dvh - var(--am-header-height, var(--header-height, 108px)) - var(--am-gap) * 2); --am-rose: #eee5e7; position: relative; padding-block: clamp(42px, 5vw, 72px); background: var(--am-rose); color: var(--ink, #292125); border-block: 1px solid #cfbdc3; --selection-color: var(--accent, #782f45); }
+.am-rail { position: relative; }
+.am-sticky { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 18px; }
+.am-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; min-width: 0; margin: 0; }
+.am-heading h2 { min-width: 0; margin: 0; font-family: var(--serif, Georgia, serif); font-size: clamp(36px, 4.1vw, 59px); font-weight: 400; line-height: 1.09; letter-spacing: -.055em; }
+.am-heading > p { max-width: 365px; margin: 0; font-size: 18px; line-height: 1.5; color: var(--muted, #6c5c60); }
+.am-stage { position: relative; isolation: isolate; min-width: 0; min-height: 0; overflow: hidden; border: 1px solid #c3a9b2; background: #e4d5da; }
+.am-stage::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at var(--pointer-x, 50%) var(--pointer-y, 42%), #ffffff99, transparent 64%); z-index: -1; pointer-events: none; }
+.am-art { position: relative; width: 100%; height: 100%; min-height: 0; margin-inline: auto; }
+.am-svg { display: block; width: 100%; height: 100%; min-height: 0; max-height: none; margin: 0; overflow: visible; }
+.am-scene-label { position: absolute; top: 22px; left: 24px; display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.4; color: #735361; pointer-events: none; z-index: 1; }
+.am-scene-dot { display: block; width: 7px; height: 7px; border: 1px solid var(--accent, #782f45); border-radius: 50%; }
+.am-table-line { position: absolute; left: 24px; right: 24px; display: block; height: 8px; background: repeating-linear-gradient(90deg, #986e7d 0 1px, transparent 1px 10px); opacity: .38; pointer-events: none; }
+.am-table-line--top { top: 12px; }
+.am-table-line--bottom { bottom: 12px; }
+.am-stage-caption { position: absolute; bottom: 24px; left: 24px; right: 24px; display: flex; align-items: center; justify-content: space-between; gap: 25px; color: #735361; font-size: 14px; line-height: 1.4; pointer-events: none; }
+.am-progress-track { display: block; width: 150px; height: 2px; background: #782f4533; overflow: hidden; }
+.am-progress-fill { display: block; width: 100%; height: 100%; background: var(--accent, #782f45); transform-origin: left center; }
+.am-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; padding: 0; margin: 0; list-style: none; }
+.am-step { display: flex; align-items: baseline; gap: 14px; min-width: 0; margin: 0; padding: 0; color: var(--muted, #6c5c60); transition: color 180ms ease; }
+.am-step-number { font-size: 14px; line-height: 1.5; font-variant-numeric: tabular-nums; color: #80636d; }
+.am-step h3 { margin: 0; font-size: 22px; line-height: 1.3; font-weight: 500; letter-spacing: -.025em; }
+.am-step p { margin: 5px 0 0; font-size: 16px; line-height: 1.45; }
+.am-step.is-active, .am-step.is-active .am-step-number { color: var(--accent, #782f45); }
+.am-step.is-active h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+.atelier-motion.am-enhanced .am-rail { height: calc(var(--am-frame-height) + 78svh); }
+.atelier-motion.am-enhanced .am-sticky { position: sticky; top: calc(var(--am-header-height, var(--header-height, 108px)) + var(--am-gap)); height: var(--am-frame-height); min-height: 0; }
+.atelier-motion:not(.am-enhanced) .am-stage { height: clamp(300px, 54vh, 560px); }
+.atelier-motion .am-assembly, .atelier-motion .am-part { transform-box: fill-box; transform-origin: center; }
+.atelier-motion .am-drafting-grid, .atelier-motion .am-pattern-notes { pointer-events: none; }
+/* Presentation attributes use these same tones in the motion-disabled frame. */
+.atelier-motion #am-cloth stop:first-child, .atelier-motion #am-sleeve-cloth stop:first-child { stop-color: #582033; }
+.atelier-motion #am-cloth stop:nth-child(2), .atelier-motion #am-sleeve-cloth stop:nth-child(2) { stop-color: #a45d74; }
+.atelier-motion #am-cloth stop:last-child, .atelier-motion #am-sleeve-cloth stop:last-child { stop-color: #782f45; }
+.atelier-motion #am-grid path { stroke: #782f45; }
+.atelier-motion .am-pattern-notes { stroke: #94717e; }
+.atelier-motion .am-hanger { stroke: #582033; }
+.atelier-motion .am-cloth { stroke: #582033; }
+.atelier-motion .am-collar .am-cloth { fill: var(--accent, #782f45); }
+.atelier-motion .am-lining { fill: #dac1ca; stroke: #a27384; }
+.atelier-motion .am-fold { stroke: #d5a5b7; }
+.atelier-motion .am-pocket { fill: #a35d74; stroke: #d5a5b7; }
+.atelier-motion .am-collar .am-detail, .atelier-motion .am-sleeve-left .am-detail, .atelier-motion .am-sleeve-right .am-detail, .atelier-motion .am-finish-details { stroke: #e0b9c7; }
+.atelier-motion .am-button { stroke: #d4a4b6; }
+.atelier-motion circle.am-button { fill: #4c1b2d; }
+.atelier-motion path.am-button { stroke: #4c1b2d; }
+.atelier-motion .am-travel-thread { stroke: #a25870; }
+.atelier-motion .am-needle { stroke: #582033; }
+.atelier-motion .am-needle path:first-child { fill: #f6eaf0; }
+.atelier-motion .am-ground-shadow { fill: #582033; }
+@media (min-width: 761px) and (max-height: 780px) {
+  .atelier-motion { --am-gap: 10px; }
+  .am-sticky { gap: 12px; }
+  .am-heading h2 { font-size: clamp(34px, 3.5vw, 48px); }
+  .am-heading > p { max-width: 380px; font-size: 16px; line-height: 1.45; }
+  .am-step h3 { font-size: 20px; }
+  .am-step p { margin-top: 3px; }
+}
+@media (max-width: 760px) {
+  .atelier-motion { --am-gap: 10px; padding-block: 42px 38px; }
+  .am-sticky { gap: 12px; }
+  .am-heading { display: block; }
+  .am-heading h2 { font-size: clamp(30px, 8.3vw, 43px); line-height: 1.1; }
+  .am-heading > p { margin-top: 12px; max-width: 440px; font-size: 16px; line-height: 1.45; }
+  .am-svg { width: 100%; height: 100%; min-height: 0; max-height: none; margin: 0; }
+  .am-scene-label { left: 12px; top: 18px; gap: 8px; font-size: 14px; }
+  .am-table-line { left: 12px; right: 12px; height: 5px; }
+  .am-table-line--top { top: 9px; }
+  .am-table-line--bottom { bottom: 9px; }
+  .am-stage-caption { left: 12px; right: 12px; bottom: 19px; gap: 10px; font-size: 14px; }
+  .am-progress-track { width: 54px; flex-shrink: 0; }
+  .am-steps { gap: 12px; padding: 0; }
+  .am-step { display: block; }
+  .am-step-number { display: block; margin-bottom: 4px; }
+  .am-step h3 { font-size: 18px; }
+  .am-step p { font-size: 14px; line-height: 1.4; margin-top: 6px; }
+  .atelier-motion.am-enhanced .am-rail { height: calc(var(--am-frame-height) + 56svh); }
+  .atelier-motion:not(.am-enhanced) .am-stage { height: min(58svh, 430px); min-height: 285px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atelier-motion.am-enhanced .am-rail { height: auto; }
+  .atelier-motion.am-enhanced .am-sticky { position: relative; top: auto; height: auto; }
+  .atelier-motion .am-art { transform: none !important; }
+  .am-step { transition: none; }
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3efed"><meta name="robots" content="noindex,nofollow">
+  <title>Салон-ателье «Светлана» — ваша линия · демо</title>
+  <meta name="description" content="«Салон-ателье «Светлана»»: независимая концепция сайта с подбором оттенка, идеями переделки вещей и анимацией пошива.">
+  <link rel="icon" href="assets/favicon.svg?v=20261030-svetlana-atelier-design-demo-r1" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=20261030-svetlana-atelier-design-demo-r1">
+  <link rel="stylesheet" href="hero-game.css?v=20261030-svetlana-atelier-design-demo-r1">
+  <link rel="stylesheet" href="atelier-motion.css?v=20261030-svetlana-atelier-design-demo-r1">
+  <link rel="stylesheet" href="second-life.css?v=20261030-svetlana-atelier-design-demo-r1">
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="app.js?v=20261030-svetlana-atelier-design-demo-r1" defer></script>
+  <script src="atelier-cursor.js?v=20261030-svetlana-atelier-design-demo-r1" defer></script>
+  <script src="hero-game.js?v=20261030-svetlana-atelier-design-demo-r1" defer></script>
+  <script src="atelier-motion.js?v=20261030-svetlana-atelier-design-demo-r1" defer></script>
+  <script src="second-life.js?v=20261030-svetlana-atelier-design-demo-r1" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">К содержимому</a>
+  <header class="header wrap">
+    <a class="wordmark" href="#" aria-label="Салон-ателье «Светлана», в начало"><span class="brand-name">СВЕТЛАНА<svg class="brand-stroke" viewBox="0 0 200 20" aria-hidden="true"><path d="M3 14C60 3 122 1 193 7"/></svg></span><span class="brand-descriptor">Ателье<br>Москва</span></a>
+    <nav id="navigation" aria-label="Главная навигация"><a href="#approach">Подход</a><a href="#hero-color-game">Подбор цвета</a><a href="#second-life">Вторая жизнь</a><a href="#atelier-motion">Как рождается вещь</a></nav>
+    <a class="header-contact" href="#contact"><span class="contact-magnet-surface">Контакты</span></a>
+    <button class="menu-toggle" aria-controls="navigation" aria-expanded="false" aria-label="Открыть меню"><span></span><span></span></button>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title" data-pointer-surface>
+      <div class="hero-copy"><p class="hero-kicker">Салон-ателье «Светлана» · Москва</p><h1 id="hero-title"><span class="hero-ink">Ваша<br> линия.</span></h1><p class="hero-desc">Одежда начинается не с размера.<br>Она начинается с вас.</p><a class="button" href="#contact">Обсудить свою вещь <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a><div class="hero-foot"><span>Силуэт. Ткань. Детали.<br>Индивидуальность в каждой линии.</span><span class="hero-thread" aria-hidden="true"></span></div></div>
+      <section class="hero-game" id="hero-color-game" aria-labelledby="hg-title">
+  <div class="hg-heading"><h2 id="hg-title">Попадите в цвет.</h2><p>Повторите оттенок вещи слева.</p></div>
+  <div class="hg-pair">
+    <figure class="hg-garment hg-target">
+      <div class="hg-stage"><svg class="hg-clothing" id="hg-target-art" viewBox="0 0 240 290" role="img" aria-label="Рубашка с цветом-образцом"><use href="assets/garments.svg#shirt"/></svg><span class="hg-shadow" aria-hidden="true"></span></div>
+    </figure>
+    <figure class="hg-garment hg-own">
+      <div class="hg-stage"><svg class="hg-clothing" id="hg-own-art" viewBox="0 0 240 290" role="img" aria-label="Пиджак: настройте цвет ползунками"><use href="assets/garments.svg#jacket"/></svg><span class="hg-shadow" aria-hidden="true"></span></div>
+    </figure>
+  </div>
+  <form class="hg-form" id="hg-form" aria-describedby="hg-instruction">
+    <p class="hg-instruction" id="hg-instruction">Настройте цвет справа и проверьте точность.</p>
+    <div class="hg-sliders">
+      <div class="hg-slider"><label for="hg-hue">Тон <output id="hg-hue-value" for="hg-hue">210°</output></label><input id="hg-hue" name="hue" type="range" min="0" max="359" step="1" value="210"></div>
+      <div class="hg-slider"><label for="hg-saturation">Насыщенность <output id="hg-saturation-value" for="hg-saturation">45%</output></label><input id="hg-saturation" name="saturation" type="range" min="0" max="100" step="1" value="45"></div>
+      <div class="hg-slider"><label for="hg-lightness">Светлота <output id="hg-lightness-value" for="hg-lightness">55%</output></label><input id="hg-lightness" name="lightness" type="range" min="10" max="90" step="1" value="55"></div>
+    </div>
+    <div class="hg-actions"><button class="hg-check" type="submit">Проверить <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button><button class="hg-replay" id="hg-replay" type="button" hidden>Сыграть снова <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button></div>
+  </form>
+  <div class="hg-feedback" id="hg-feedback" role="status" aria-live="polite" aria-atomic="true"><span class="hg-score" id="hg-score"></span><p id="hg-result"></p></div>
+  <noscript><p class="hg-no-js">Для игры нужен JavaScript. Вы можете связаться с ателье через кнопку «Контакты».</p></noscript>
+</section>
+
+    </section>
+    <section id="approach" class="approach section wrap" aria-labelledby="approach-title" data-pointer-surface>
+      <div class="approach-main"><h2 id="approach-title">Не подгонять себя.<br>Найти свою форму.</h2><p>Хорошая посадка начинается с того, как вы хотите чувствовать себя в одежде. Обсудите свою вещь и возможные изменения с мастером.</p></div>
+      <svg class="approach-thread" viewBox="0 0 1100 85" aria-hidden="true"><path d="M0 62 C180 62 190 10 350 20 S540 90 700 42 S925 8 1100 30"/></svg>
+      <div class="principle-grid">
+        <article data-pointer-surface><span class="principle-art line-art" aria-hidden="true"></span><div><h3>Силуэт</h3><p>Свобода, чёткость или мягкость. Сначала выбираем характер будущей вещи.</p></div></article>
+        <article data-pointer-surface><span class="principle-art fold-art" aria-hidden="true"></span><div><h3>Материал</h3><p>Ткань меняет всё: как ложится складка, движется и ощущается одежда.</p></div></article>
+        <article data-pointer-surface><span class="principle-art detail-art" aria-hidden="true"></span><div><h3>Деталь</h3><p>Воротник, линия рукава, длина. Именно нюансы делают вещь вашей.</p></div></article>
+      </div>
+    </section>
+    <section id="second-life" class="second-life" aria-labelledby="uc-title" data-pointer-surface>
+      <div class="wrap">
+        <div class="uc-heading"><h2 id="uc-title">Вторая жизнь<br>любимой вещи.</h2><p>Знакомая вещь может измениться. Выберите переделку и посмотрите, какой она станет.</p></div>
+        <div class="uc-layout">
+          <div class="uc-visual">
+            <div class="uc-compare" aria-label="Сравнение вещи до и после переделки">
+              <div class="uc-layer uc-before"><svg class="uc-garment" id="uc-before-art" viewBox="0 0 320 400" role="img" aria-label="Рубашка до переделки"><use href="assets/upcycle.svg#old-shirt"/></svg></div>
+              <div class="uc-layer uc-after"><svg class="uc-garment" id="uc-after-art" viewBox="0 0 320 400" role="img" aria-label="Рубашка с новой длиной"><use href="assets/upcycle.svg#shirt-crop"/></svg></div>
+              <span class="uc-divider" aria-hidden="true"></span><button type="button" class="uc-drag-handle" role="slider" aria-label="Сравнение до и после" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="До: 50%, после: 50%" aria-controls="uc-before-art uc-after-art"><span class="uc-drag-grip" aria-hidden="true"></span></button><span class="uc-label uc-label-before" aria-hidden="true">До</span><span class="uc-label uc-label-after" aria-hidden="true">После</span>
+            </div>
+            <div class="uc-figcaptions" aria-hidden="true"><span id="uc-before-caption">Рубашка</span><span id="uc-after-caption">Рубашка с новой длиной</span></div>
+            <div class="uc-compare-control"><label for="uc-compare">Сравнить до и после</label><input id="uc-compare" type="range" min="0" max="100" step="1" value="50" aria-controls="uc-before-art uc-after-art" aria-describedby="uc-compare-hint"><p id="uc-compare-hint">Двигайте границу на вещи или ползунок.</p></div>
+          </div>
+          <div class="uc-controls">
+            <fieldset><legend>Какой вещи дадим новый шанс?</legend><div class="uc-garment-options"><label><input type="radio" name="uc-garment" value="shirt" checked><span>Рубашка</span></label><label><input type="radio" name="uc-garment" value="jeans"><span>Джинсы</span></label><label><input type="radio" name="uc-garment" value="coat"><span>Пальто</span></label></div></fieldset>
+            <fieldset><legend>Выберите переделку</legend><div class="uc-routes"><button type="button" data-uc-route="0" aria-pressed="true"><span class="uc-route-title">Укоротить силуэт</span><span class="uc-route-detail">Более короткая длина, прежний характер.</span></button><button type="button" data-uc-route="1" aria-pressed="false"><span class="uc-route-title">Убрать рукава</span><span class="uc-route-detail">Лёгкий жилет для многослойных образов.</span></button><button type="button" data-uc-route="2" aria-pressed="false"><span class="uc-route-title">Выделить талию</span><span class="uc-route-detail">Мягкая сборка и пояс из ткани.</span></button></div></fieldset>
+            <div class="uc-result" role="status" aria-live="polite" aria-atomic="true"><h3 id="uc-result-title">Рубашка с новой длиной</h3><p id="uc-result-copy">Укороченный низ меняет пропорции. Рукава и воротник сохраняют знакомый характер вещи.</p></div>
+            <div class="uc-actions"><button class="button" id="uc-discuss" type="button">Обсудить переделку <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button><button class="uc-reset" id="uc-reset" type="button">Начать заново</button></div>
+          </div>
+        </div>
+        <p class="uc-note">Это идеи переделки, а не готовые изделия ателье. Что получится с вашей вещью, зависит от материала, состояния и запаса ткани — детали обсудите с мастером.</p>
+        <noscript><p class="uc-note">Для выбора вариантов нужен JavaScript. Обсудить свою вещь можно по телефону или в Telegram в разделе «Контакты».</p></noscript>
+      </div>
+    </section>
+    <section id="atelier-motion" class="atelier-motion" aria-labelledby="atelier-motion-title">
+  <div class="wrap">
+    <div class="am-rail">
+      <div class="am-sticky">
+        <div class="am-heading"><h2 id="atelier-motion-title">От линии<br>к любимой вещи.</h2><p>Продуманное лекало, точный шов и та самая посадка. У каждой вещи — свой путь.</p></div>
+        <div class="am-stage">
+          <span class="am-table-line am-table-line--top" aria-hidden="true"></span>
+          <span class="am-table-line am-table-line--bottom" aria-hidden="true"></span>
+          <div class="am-scene-label" aria-hidden="true"><span class="am-scene-dot"></span><span>Линия за линией</span></div>
+          <div class="am-art motion-parallax">
+            <svg class="am-svg" viewBox="210 50 580 570" role="img" aria-labelledby="am-svg-title am-svg-description">
+              <title id="am-svg-title">Как из деталей лекала получается жакет</title>
+              <desc id="am-svg-description">Два рукава, полочки и воротник соединяются в винный жакет. Появляются швы, карманы и пуговицы.</desc>
+              <defs>
+                <linearGradient id="am-cloth" x1="0" x2="1"><stop stop-color="#582033"/><stop offset=".47" stop-color="#945068"/><stop offset="1" stop-color="#782f45"/></linearGradient>
+                <linearGradient id="am-sleeve-cloth" x1="0" x2="1"><stop stop-color="#60243b"/><stop offset=".6" stop-color="#a46077"/><stop offset="1" stop-color="#782f45"/></linearGradient>
+                <pattern id="am-grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#782f45" stroke-opacity=".09" stroke-width="1"/></pattern>
+                <pattern id="am-weave" width="5" height="5" patternUnits="userSpaceOnUse"><path d="M0 1H5M1 0V5" stroke="#ffffff" stroke-opacity=".09" stroke-width=".55"/></pattern>
+                <filter id="am-soft-shadow" x="-40%" y="-30%" width="180%" height="175%"><feGaussianBlur stdDeviation="18"/></filter>
+              </defs>
+              <rect class="am-drafting-grid" x="35" y="25" width="930" height="600" fill="url(#am-grid)"/>
+              <ellipse class="am-ground-shadow" cx="500" cy="573" rx="203" ry="21" fill="#4c1e30" opacity=".15" filter="url(#am-soft-shadow)"/>
+              <g class="am-pattern-notes" fill="none" stroke="#9b7984" stroke-width="1.2" opacity=".64" aria-hidden="true">
+                <path d="M238 152V552M230 152H246M230 552H246M755 153V551M747 153H763M747 551H763"/>
+                <path d="M314 605H684M314 597V613M684 597V613"/>
+
+              </g>
+              <g class="am-hanger" fill="none" stroke="#683448" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M500 137V118C500 104 521 105 521 89C521 70 496 68 489 82M500 137L365 189Q352 195 370 197H630Q648 195 635 189Z"/>
+              </g>
+              <g class="am-assembly" stroke-linejoin="round">
+                <g class="am-part am-sleeve-left" data-am-x="-150" data-am-y="-32" data-am-rotation="-17">
+                  <path class="am-cloth" d="M392 193L343 213Q331 220 324 244L256 430L308 452L379 306L410 247Z" fill="url(#am-sleeve-cloth)" stroke="#542035" stroke-width="2"/>
+                  <path class="am-cloth-texture" d="M392 193L343 213Q331 220 324 244L256 430L308 452L379 306L410 247Z" fill="url(#am-weave)"/>
+                  <path class="am-fold" d="M351 250Q353 303 290 421M323 373L310 432" fill="none" stroke="#d9aaba" stroke-opacity=".65" stroke-width="2"/>
+                  <path class="am-detail" d="M264 415L315 437M276 434L277 435M285 438L286 439" fill="none" stroke="#eed4dc" stroke-width="2"/>
+                </g>
+                <g class="am-part am-sleeve-right" data-am-x="150" data-am-y="-32" data-am-rotation="17">
+                  <path class="am-cloth" d="M608 193L657 213Q669 220 676 244L744 430L692 452L621 306L590 247Z" fill="url(#am-sleeve-cloth)" stroke="#542035" stroke-width="2"/>
+                  <path class="am-cloth-texture" d="M608 193L657 213Q669 220 676 244L744 430L692 452L621 306L590 247Z" fill="url(#am-weave)"/>
+                  <path class="am-fold" d="M649 250Q647 303 710 421M677 373L690 432" fill="none" stroke="#d9aaba" stroke-opacity=".65" stroke-width="2"/>
+                  <path class="am-detail" d="M736 415L685 437M724 434L723 435M715 438L714 439" fill="none" stroke="#eed4dc" stroke-width="2"/>
+                </g>
+                <g class="am-part am-front-left" data-am-x="-110" data-am-y="29" data-am-rotation="-10">
+                  <path class="am-cloth" d="M449 161L391 192Q375 220 375 258L395 377L382 546Q435 565 494 555L508 338L500 220Z" fill="url(#am-cloth)" stroke="#542035" stroke-width="2"/>
+                  <path class="am-cloth-texture" d="M449 161L391 192Q375 220 375 258L395 377L382 546Q435 565 494 555L508 338L500 220Z" fill="url(#am-weave)"/>
+                  <path class="am-fold" d="M407 267Q424 318 415 383L404 520M479 343Q455 427 465 535" fill="none" stroke="#c991a5" stroke-opacity=".5" stroke-width="2"/>
+                  <path class="am-pocket am-detail" d="M406 387L464 392L461 406L405 402ZM412 268L449 275L447 283L411 277Z" fill="#9c5b72" stroke="#e2b2c1" stroke-width="1.4"/>
+                </g>
+                <g class="am-part am-front-right" data-am-x="110" data-am-y="29" data-am-rotation="10">
+                  <path class="am-cloth" d="M551 161L609 192Q625 220 625 258L605 377L618 546Q565 565 506 555L492 338L500 220Z" fill="url(#am-cloth)" stroke="#542035" stroke-width="2"/>
+                  <path class="am-cloth-texture" d="M551 161L609 192Q625 220 625 258L605 377L618 546Q565 565 506 555L492 338L500 220Z" fill="url(#am-weave)"/>
+                  <path class="am-fold" d="M593 267Q576 318 585 383L596 520M521 343Q545 427 535 535" fill="none" stroke="#c991a5" stroke-opacity=".5" stroke-width="2"/>
+                  <path class="am-pocket am-detail" d="M594 387L536 392L539 406L595 402Z" fill="#9c5b72" stroke="#e2b2c1" stroke-width="1.4"/>
+                </g>
+                <g class="am-part am-collar" data-am-x="0" data-am-y="-100" data-am-rotation="0">
+                  <path class="am-lining" d="M449 161Q500 179 551 161L531 222L500 257L469 222Z" fill="#ead4dc" stroke="#ac7085" stroke-width="1.5"/>
+                  <path class="am-cloth" d="M449 161L420 190L450 237L438 250L496 339L488 252L468 203Z" fill="#aa6b81" stroke="#60243b" stroke-width="1.8"/>
+                  <path class="am-cloth" d="M551 161L580 190L550 237L562 250L504 339L512 252L532 203Z" fill="#945068" stroke="#60243b" stroke-width="1.8"/>
+                  <path class="am-detail" d="M451 171L470 207L491 256M548 171L529 207L509 256" fill="none" stroke="#eed1dc" stroke-opacity=".8" stroke-width="1.2"/>
+                </g>
+                <g class="am-finish-details" fill="none" stroke="#efd2db" stroke-width="1.7">
+                  <path class="am-seam" d="M390 222Q385 278 403 370L392 535Q437 551 483 546"/>
+                  <path class="am-seam" d="M610 222Q615 278 597 370L608 535Q563 551 517 546"/>
+                  <path class="am-seam" d="M347 233L271 425M653 233L729 425"/>
+                  <path class="am-seam" d="M503 342L507 539"/>
+                  <circle class="am-button" cx="497" cy="363" r="5.5" fill="#441c2b" stroke="#dfb2c0"/>
+                  <circle class="am-button" cx="498" cy="417" r="5.5" fill="#441c2b" stroke="#dfb2c0"/>
+                  <path class="am-button" d="M513 363H524M514 417H525" stroke="#4b1d30" stroke-width="2.4"/>
+                </g>
+              </g>
+              <path class="am-travel-thread" d="M291 325C349 204 379 184 423 236S486 332 500 389S571 458 600 371S651 253 710 324" fill="none" stroke="#a1676b" stroke-width="2" opacity="0"/>
+              <g class="am-needle" fill="none" stroke="#512134" stroke-linecap="round" opacity="0" aria-hidden="true"><path d="M-31 0H25Q34 0 34 3Q34 6 25 6H-31Z" fill="#f7e9ec" stroke-width="1.4"/><path d="M20 3H28" stroke-width="1.1"/></g>
+            </svg>
+          </div>
+          <div class="am-stage-caption" aria-hidden="true"><span>Из замысла — в гардероб</span><span class="am-progress-track"><span class="am-progress-fill"></span></span></div>
+        </div>
+        <ol class="am-steps" aria-label="Три этапа создания вещи">
+          <li class="am-step"><span class="am-step-number">01</span><div><h3>Лекало</h3><p>Линия задаёт характер.</p></div></li>
+          <li class="am-step"><span class="am-step-number">02</span><div><h3>Сборка</h3><p>Детали становятся целым.</p></div></li>
+          <li class="am-step"><span class="am-step-number">03</span><div><h3>Посадка</h3><p>Последний штрих — ваш.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section id="contact" class="contact section wrap" aria-labelledby="contact-title">
+      <div class="contact-intro"><p class="section-note">Всё начинается с разговора</p><h2 id="contact-title">Ваша идея.<br>Наша встреча.</h2><p class="contact-description">Свяжитесь с ателье, чтобы обсудить свою вещь. В этой демоверсии можно попробовать форму без отправки данных.</p><a class="large-phone" href="tel:+79153929484">+7 915 392-94-84</a><div class="contact-links"><a class="action-link" href="mailto:ateliesvetlana25@gmail.com">Написать в ателье <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a><a class="action-link" href="tel:+79153929484">Позвонить в ателье <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a></div><p class="contact-email"><a href="mailto:ateliesvetlana25@gmail.com">ateliesvetlana25@gmail.com</a></p><aside class="address-card"><h3>Москва</h3><p>Ярославское шоссе, 107</p><p class="appointment-note">Перед визитом уточните время работы и возможность встречи напрямую в ателье.</p><a class="text-link" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%AF%D1%80%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%20107" target="_blank" rel="noopener noreferrer">Открыть маршрут <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a></aside><svg class="contact-thread" viewBox="0 0 500 160" aria-hidden="true"><path d="M0 120 C100 120 125 15 230 45 S360 160 500 35"/><circle cx="230" cy="45" r="8"/></svg></div>
+      <div class="appointment-panel" id="appointment"><h3>Запись в ателье</h3><p class="appointment-idea" id="appointment-idea" hidden></p><a class="appointment-phone appointment-email" href="mailto:ateliesvetlana25@gmail.com">ateliesvetlana25@gmail.com</a><p class="demo-notice" id="appointment-notice">Демо: данные не отправляются, реальная запись не создаётся.</p>
+        <form id="appointment-form" aria-describedby="appointment-notice" autocomplete="off">
+          <fieldset><legend>Как удобнее начать?</legend><div class="request-types"><label><input type="radio" name="request" value="meeting" checked><span>Запись в ателье</span></label><label><input type="radio" name="request" value="callback"><span>Обратный звонок</span></label></div></fieldset>
+          <label class="field-label" for="appointment-name">Ваше имя</label><input id="appointment-name" name="name" type="text" required minlength="2" maxlength="60" placeholder="Как к вам обращаться" autocomplete="off">
+          <label class="field-label" for="appointment-phone">Телефон</label><input id="appointment-phone" name="phone" type="tel" required inputmode="tel" maxlength="24" placeholder="+7 999 123-45-67" autocomplete="off" aria-describedby="appointment-phone-hint"><p id="appointment-phone-hint" class="field-hint">Введите номер с кодом страны, например +7 999 123-45-67.</p>
+          <button class="button" type="submit" disabled>Оставить демозаявку <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button><p class="fine-print">Для настоящей записи напишите в ателье или воспользуйтесь другими опубликованными контактами.</p><noscript><p>Чтобы попробовать демоформу, включите JavaScript. Для записи: <a href="mailto:ateliesvetlana25@gmail.com">ateliesvetlana25@gmail.com</a>.</p></noscript>
+        </form>
+        <div id="appointment-success" class="appointment-success" role="status" tabindex="-1" hidden><span class="success-stitch" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><h4>Демозаявка заполнена.</h4><p id="appointment-success-copy"></p><p>Данные очищены. Для встречи свяжитесь с ателье напрямую.</p><button class="button" id="appointment-reset" type="button">Попробовать ещё раз <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><span class="footer-thread" aria-hidden="true"></span><a class="wordmark" href="#"><span class="brand-name">СВЕТЛАНА<svg class="brand-stroke" viewBox="0 0 200 20" aria-hidden="true"><path d="M3 14C60 3 122 1 193 7"/></svg></span><span class="brand-descriptor">Ателье<br>Москва</span></a><p>Индивидуальность в каждой линии.<br>Независимая демоверсия.</p><button class="demo-link" data-demo>О тестовой версии</button></footer>
+  <dialog id="demo-dialog" class="dialog" aria-labelledby="demo-title"><button class="dialog-close" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><h2 id="demo-title">Эскиз<br>будущего сайта.</h2><p>Независимая тестовая концепция: «Салон-ателье «Светлана»». Это не официальный сайт, не официальная айдентика и не подтверждённое портфолио ателье. Иллюстрации и творческие сценарии демонстрируют возможности будущего сайта.</p><p>Для настоящей записи используйте опубликованные контакты ателье. Возможность пошива, ремонта, конкретные услуги, условия и время встречи уточняйте напрямую. Здесь нет оплаты и отправки заявок.</p><p><a class="text-link" href="https://msk.spravka.city/company/svetlana-553" target="_blank" rel="noopener noreferrer">Источник контактов 1 <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a></p><p><a class="text-link" href="https://urbanplaces.su/ru_moskva/moskva/card-885887-svetlana" target="_blank" rel="noopener noreferrer">Источник контактов 2 <svg class="ui-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M13 5l7 7-7 7"/></svg></a></p></dialog>
+</body></html>

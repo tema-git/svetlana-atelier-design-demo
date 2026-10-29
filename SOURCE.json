@@ -1,0 +1,37 @@
+{
+  "brand": "Салон-ателье «Светлана»",
+  "short_brand": "Светлана",
+  "slug": "svetlana-atelier-design-demo",
+  "email": "ateliesvetlana25@gmail.com",
+  "phone": "+79153929484",
+  "phone_display": "+7 915 392-94-84",
+  "address": "Ярославское шоссе, 107",
+  "city": "Москва",
+  "telegram": null,
+  "source_urls": [
+    "https://msk.spravka.city/company/svetlana-553",
+    "https://urbanplaces.su/ru_moskva/moskva/card-885887-svetlana"
+  ],
+  "contacted": false,
+  "spreadsheet_row": null,
+  "verified_on": "2026-10-30",
+  "email_evidence": "Public business email+phone+address currently repeated in Spravka.City and UrbanPlaces, clothingateliercategoryverified.",
+  "email_source_date": "Notstatedonlivepages; checked2026-10-30",
+  "confidence": "medium",
+  "website_status": "Directoryhistoricalatelie.moscow opens200 as unrelatedPiercingAtelier at МалыйХаритоньевский9/13с6 withdifferentphone; nocurrentworkingwebsiteforSvetlanaclothingatelierfound.",
+  "caveats": [
+    "HistoricaldomaininUrbanPlaces iswrongbusinessnow; do notciteittoverifyateliercontacts. It isonlyevidencetheoldsiteisnotcurrent.",
+    "Anotherdirectorylistssamebrand/addresswithdifferentphone9852875671; chosenphone9153929484matches2email-containingcards.",
+    "Mailboxdeliverabilitynottested."
+  ],
+  "contacted_evidence": "NewbusinessoutsideCollaboration; absentfromknownlocalcontactedexamples; parentmustcheckYandexSentbeforecreatingdraft.",
+  "no_site_evidence_urls": [
+    "https://atelie.moscow/"
+  ],
+  "template": "lepata-atelier-design-demo",
+  "template_commit": "2617d97431b663fa417961ffd5e7881d0bee6275",
+  "prepared_on": "2026-10-30",
+  "demo_only": true,
+  "data_submission": false,
+  "repository": "svetlana-atelier-design-demo"
+}
