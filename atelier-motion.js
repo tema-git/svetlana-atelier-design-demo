@@ -6,6 +6,7 @@
   gsap.registerPlugin(ScrollTrigger);
   const rail = scene.querySelector('.am-rail');
   const sticky = scene.querySelector('.am-sticky');
+  const stage = scene.querySelector('.am-stage');
   const svg = scene.querySelector('.am-svg');
   const header = document.querySelector('.header');
   const parts = [...scene.querySelectorAll('.am-part')];
@@ -38,6 +39,25 @@
       x: Number(part.dataset.amX), y: Number(part.dataset.amY),
       rotation: Number(part.dataset.amRotation)
     }));
+    const bounds = parts.map(part => part.getBBox());
+    const entryDuration = .24;
+    // Match the opening canvas to the stage's aspect ratio. On a wide screen,
+    // the sleeves begin near its outer edges rather than in a tiny centre cluster.
+    const openingBox = () => {
+      const height = 750;
+      const width = Math.max(1000, height * stage.clientWidth / Math.max(1, stage.clientHeight));
+      return { x: 500 - width / 2, y: -60, width, height };
+    };
+    const openingViewBox = () => {
+      const box = openingBox();
+      return `${box.x} ${box.y} ${box.width} ${box.height}`;
+    };
+    const openingX = index => {
+      const side = Math.sign(states[index].x);
+      if (!side) return 0;
+      const edge = parts[index].classList.contains('am-sleeve-left') || parts[index].classList.contains('am-sleeve-right') ? .4 : .24;
+      return 500 + side * openingBox().width * edge - (bounds[index].x + bounds[index].width / 2);
+    };
     let activeStep = -1;
     const setStep = progress => {
       const index = progress < .35 ? 0 : progress < .74 ? 1 : 2;
@@ -54,8 +74,6 @@
       needle.setAttribute('transform', `translate(${point.x} ${point.y}) rotate(${angle})`);
     };
 
-    parts.forEach((part, index) => gsap.set(part, states[index]));
-    gsap.set(svg, { attr: { viewBox: '0 -50 1000 750' } });
     gsap.set(scene.querySelectorAll('.am-cloth'), { fill: '#ede4e6', stroke: '#a9828e' });
     gsap.set(scene.querySelectorAll('.am-cloth-texture, .am-detail, .am-fold, .am-finish-details, .am-hanger'), { autoAlpha: 0 });
     gsap.set(scene.querySelector('.am-lining'), { fill: '#f1e6e9' });
@@ -66,35 +84,59 @@
 
     const timeline = gsap.timeline({
       defaults: { ease: 'none' },
-      onUpdate: function () { setStep(this.progress()); updateNeedle(this.progress()); },
+      onUpdate: function () {
+        const progress = Math.max(0, Math.min(1, this.time() - entryDuration));
+        setStep(progress);
+        updateNeedle(progress);
+      },
       scrollTrigger: {
+        id: 'atelier-garment-story',
         trigger: rail,
-        start: () => `top top+=${parseFloat(getComputedStyle(sticky).top) || 120}`,
-        end: () => `+=${Math.max(300, rail.offsetHeight - sticky.offsetHeight)}`,
+        // The stage starts moving as its upper edge enters from below. The
+        // native sticky frame takes over later without a new animation owner.
+        start: () => `top+=${stage.offsetTop} 95%`,
+        end: () => rail.getBoundingClientRect().top + window.scrollY
+          - (parseFloat(getComputedStyle(sticky).top) || 120)
+          + Math.max(300, rail.offsetHeight - sticky.offsetHeight),
         scrub: .35,
         invalidateOnRefresh: true
       }
     });
-    timeline.to(scene.querySelectorAll('.am-pattern-notes'), { opacity: .15, duration: .22 }, 0);
-    timeline.to(parts, { x: 0, y: 0, rotation: 0, duration: .42, stagger: .025, ease: 'power1.inOut' }, .08);
-    timeline.to(scene.querySelectorAll('.am-cloth'), { fill: accent, stroke: '#582033', duration: .25 }, .25);
-    timeline.to(svg, { attr: { viewBox: '210 50 580 570' }, duration: .4, ease: 'power1.inOut' }, .3);
-    timeline.to(scene.querySelector('.am-lining'), { fill: '#dac1ca', duration: .2 }, .35);
-    timeline.to(scene.querySelectorAll('.am-fold, .am-cloth-texture'), { autoAlpha: 1, duration: .22 }, .38);
-    timeline.to(scene.querySelectorAll('.am-finish-details'), { autoAlpha: 1, duration: .01 }, .43);
-    timeline.to(travel, { opacity: .85, strokeDashoffset: 0, duration: .34 }, .42);
-    timeline.to(needle, { opacity: 1, duration: .035 }, .42);
-    timeline.to(seams, { strokeDashoffset: 0, duration: .32, stagger: .025 }, .44);
-    timeline.to(scene.querySelectorAll('.am-detail'), { autoAlpha: 1, duration: .17, stagger: .014 }, .62);
-    timeline.to(needle, { opacity: 0, duration: .04 }, .78);
-    timeline.to(travel, { opacity: 0, duration: .1 }, .78);
-    timeline.to(scene.querySelector('.am-hanger'), { autoAlpha: 1, duration: .15 }, .75);
-    timeline.to(scene.querySelector('.am-pattern-notes'), { opacity: 0, duration: .15 }, .76);
-    timeline.to(scene.querySelector('.am-assembly'), { y: -12, scale: 1.045, duration: .18 }, .8);
-    timeline.to(scene.querySelector('.am-ground-shadow'), { opacity: .18, scaleX: 1.1, duration: .18 }, .8);
-    timeline.to(progressFill, { scaleX: 1, duration: 1 }, 0);
-    setStep(timeline.progress());
-    updateNeedle(timeline.progress());
+    timeline.fromTo(parts, {
+      x: openingX,
+      y: index => states[index].y * 1.55,
+      rotation: index => states[index].rotation * 1.3
+    }, {
+      x: index => states[index].x,
+      y: index => states[index].y,
+      rotation: index => states[index].rotation,
+      duration: entryDuration,
+      ease: 'power1.inOut'
+    }, 0);
+    timeline.fromTo(svg, { attr: { viewBox: openingViewBox } }, {
+      attr: { viewBox: '0 -50 1000 750' }, duration: entryDuration, ease: 'power1.inOut'
+    }, 0);
+    timeline.addLabel('story', entryDuration);
+    timeline.to(scene.querySelectorAll('.am-pattern-notes'), { opacity: .15, duration: .22 }, 'story');
+    timeline.to(parts, { x: 0, y: 0, rotation: 0, duration: .42, stagger: .025, ease: 'power1.inOut' }, 'story+=.08');
+    timeline.to(scene.querySelectorAll('.am-cloth'), { fill: accent, stroke: '#582033', duration: .25 }, 'story+=.25');
+    timeline.to(svg, { attr: { viewBox: '210 50 580 570' }, duration: .4, ease: 'power1.inOut' }, 'story+=.3');
+    timeline.to(scene.querySelector('.am-lining'), { fill: '#dac1ca', duration: .2 }, 'story+=.35');
+    timeline.to(scene.querySelectorAll('.am-fold, .am-cloth-texture'), { autoAlpha: 1, duration: .22 }, 'story+=.38');
+    timeline.to(scene.querySelectorAll('.am-finish-details'), { autoAlpha: 1, duration: .01 }, 'story+=.43');
+    timeline.to(travel, { opacity: .85, strokeDashoffset: 0, duration: .34 }, 'story+=.42');
+    timeline.to(needle, { opacity: 1, duration: .035 }, 'story+=.42');
+    timeline.to(seams, { strokeDashoffset: 0, duration: .32, stagger: .025 }, 'story+=.44');
+    timeline.to(scene.querySelectorAll('.am-detail'), { autoAlpha: 1, duration: .17, stagger: .014 }, 'story+=.62');
+    timeline.to(needle, { opacity: 0, duration: .04 }, 'story+=.78');
+    timeline.to(travel, { opacity: 0, duration: .1 }, 'story+=.78');
+    timeline.to(scene.querySelector('.am-hanger'), { autoAlpha: 1, duration: .15 }, 'story+=.75');
+    timeline.to(scene.querySelector('.am-pattern-notes'), { opacity: 0, duration: .15 }, 'story+=.76');
+    timeline.to(scene.querySelector('.am-assembly'), { y: -12, scale: 1.045, duration: .18 }, 'story+=.8');
+    timeline.to(scene.querySelector('.am-ground-shadow'), { opacity: .18, scaleX: 1.1, duration: .18 }, 'story+=.8');
+    timeline.to(progressFill, { scaleX: 1, duration: 1 + entryDuration }, 0);
+    setStep(Math.max(0, timeline.time() - entryDuration));
+    updateNeedle(Math.max(0, timeline.time() - entryDuration));
 
     return () => {
       scene.classList.remove('am-enhanced');

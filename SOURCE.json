@@ -31,9 +31,10 @@
   "approved_for_site_copy_by_root": true,
   "approved_for_draft_only": true,
   "template": "lepata-atelier-design-demo",
-  "template_commit": "2617d97431b663fa417961ffd5e7881d0bee6275",
+  "template_commit": "c31e10d5f46fb1ea09ff32989b82d64e7dec93df",
   "prepared_on": "2026-10-30",
   "demo_only": true,
   "data_submission": false,
-  "repository": "svetlana-atelier-design-demo"
+  "repository": "svetlana-atelier-design-demo",
+  "last_synced_on": "2026-10-30"
 }

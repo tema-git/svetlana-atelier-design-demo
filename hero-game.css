@@ -8,7 +8,8 @@
   --hg-pointer-y: 0px;
   position: relative;
   min-width: 0;
-  align-self: start;
+  align-self: center;
+  margin-block-start: clamp(24px, 3vw, 44px);
   isolation: isolate;
   container-type: inline-size;
   border: 0;
@@ -20,7 +21,6 @@
 }
 .hg-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 18px; margin-bottom: 10px; }
 .hg-heading h2 { font-family: var(--serif, Georgia, serif); font-size: clamp(24px, 2.35vw, 34px); line-height: 1.2; letter-spacing: -.045em; font-weight: 400; margin: 0; }
-.hg-heading > p { margin: 0; color: #6c5c60; font-size: 14px; line-height: 1.5; }
 .hg-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .hg-garment { margin: 0; min-width: 0; background: radial-gradient(ellipse at center,#eee5e7a0,transparent 70%); border: 0; }
 .hg-own { background: radial-gradient(ellipse at center,#dfc7d077,transparent 70%); }
@@ -35,7 +35,6 @@
 .hg-own .hg-clothing { color: var(--hg-own); }
 .hg-shadow { position: absolute; bottom: 9px; left: 21%; width: 58%; height: 9px; border-radius: 50%; background: #55333f1c; filter: blur(5px); pointer-events: none; }
 .hg-form { margin-top: 10px; }
-.hg-instruction { margin: 0 0 10px; color: #6c5c60; font-size: 16px; line-height: 1.45; }
 .hg-sliders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .hg-slider { min-width: 0; }
 .hg-slider label { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0 5px; margin-bottom: 9px; font-size: 16px; line-height: 1.35; }
@@ -65,7 +64,6 @@
 .hg-no-js { margin-top: 15px; font-size: 16px; line-height: 1.5; }
 @media (min-width: 761px) and (max-width: 1100px) {
   .hero-game { padding: 20px; }
-  .hg-heading > p { font-size: 14px; }
   .hg-heading { margin-bottom: 15px; }
   .hg-sliders { grid-template-columns: 1fr; gap: 2px; }
   .hg-slider { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 10px; align-items: center; }
@@ -73,9 +71,8 @@
   .hg-stage { height: 185px; }
 }
 @media (max-width: 760px) {
-  .hero-game { width: 100%; padding: 22px; }
+  .hero-game { width: 100%; padding: 22px; margin-block-start: 0; }
   .hg-heading h2 { font-size: 30px; }
-  .hg-heading > p { font-size: 14px; }
   .hg-stage { height: clamp(170px, 48vw, 245px); }
   .hg-sliders { grid-template-columns: 1fr; gap: 5px; }
   .hg-slider { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 12px; align-items: center; }

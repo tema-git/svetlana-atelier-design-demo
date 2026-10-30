@@ -56,11 +56,12 @@
   }
   function accuracy() {
     const difference = distance(target, values());
-    return Math.max(0, Math.min(100, Math.round(100 * Math.exp(-difference / 45))));
+    // A gentle curve rewards near matches without giving unrelated colours a high score.
+    return Math.round(100 / (1 + Math.pow(difference / 45, 2)));
   }
 
   function setArt(svg, garment, suffix) {
-    svg.querySelector('use').setAttribute('href', `assets/garments.svg#${garment.id}`);
+    svg.querySelector('use').setAttribute('href', `assets/garments.svg?v=20261030-sync1#${garment.id}`);
     svg.setAttribute('aria-label', `${garment.name}: ${suffix}`);
   }
 

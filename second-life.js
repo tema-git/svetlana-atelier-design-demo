@@ -28,6 +28,7 @@
   const dragHandle = root.querySelector('.uc-drag-handle');
   const resultTitle = root.querySelector('#uc-result-title');
   const resultCopy = root.querySelector('#uc-result-copy');
+  const artworkUrl = 'assets/upcycle.svg?v=20261030-sync1';
   let garment = 'shirt', routeIndex = 0;
   let drag = null;
 
@@ -67,8 +68,8 @@
     stopDrag();
     const selected = garments[garment], route = selected.routes[routeIndex];
     radios.forEach(input => { input.checked = input.value === garment; });
-    beforeArt.querySelector('use').setAttribute('href', `assets/upcycle.svg#${selected.before}`);
-    afterArt.querySelector('use').setAttribute('href', `assets/upcycle.svg#${route.id}`);
+    beforeArt.querySelector('use').setAttribute('href', `${artworkUrl}#${selected.before}`);
+    afterArt.querySelector('use').setAttribute('href', `${artworkUrl}#${route.id}`);
     beforeArt.setAttribute('aria-label', `${selected.name} до переделки`);
     afterArt.setAttribute('aria-label', route.title);
     routeButtons.forEach((button, index) => {
@@ -95,7 +96,6 @@
 
   if (dragHandle) {
     dragHandle.setAttribute('aria-orientation', 'horizontal');
-    dragHandle.setAttribute('aria-describedby', 'uc-compare-hint');
     dragHandle.addEventListener('pointerdown', event => {
       if (event.isPrimary === false || event.button !== 0 || drag) return;
       const bounds = compare.getBoundingClientRect();
@@ -141,13 +141,6 @@
   root.querySelector('#uc-discuss').addEventListener('click', () => {
     const selected = garments[garment], route = selected.routes[routeIndex];
     document.dispatchEvent(new CustomEvent('atelier:idea', {detail: `${selected.name}: ${route.label.toLowerCase()}. Идея — «${route.title}».`}));
-  });
-  root.querySelector('#uc-reset').addEventListener('click', () => {
-    updateInPlace(() => {
-      garment = 'shirt'; routeIndex = 0; render();
-      document.dispatchEvent(new CustomEvent('atelier:clear-idea'));
-      radios[0].focus({preventScroll: true});
-    });
   });
   render();
 })();

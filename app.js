@@ -186,7 +186,6 @@
         strokeDashoffset: 0, ease: 'none',
         scrollTrigger: {trigger: '#approach', start: 'top 85%', end: 'center 45%', scrub: .35}
       });
-      gsap.to('.hero-thread', {scaleX: .55, ease: 'none', scrollTrigger: {trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true}});
     });
     if (document.fonts) document.fonts.ready.then(refresh);
     window.addEventListener('load', refresh, {once: true});
