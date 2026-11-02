@@ -29,12 +29,7 @@ button:disabled{cursor:not-allowed;opacity:.55}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .header{min-height:108px;display:flex;align-items:center;gap:32px;position:sticky;top:0;z-index:50;isolation:isolate;background:var(--paper)}
 .header::before{content:'';position:absolute;inset:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;background:var(--paper);border-bottom:1px solid var(--rule);box-shadow:0 5px 18px #29212508;pointer-events:none}
-.wordmark{display:inline-flex;align-items:center;gap:22px;flex-shrink:0}
-.wordmark .brand-name{position:relative;display:block;font-family:var(--serif);font-size:48px;line-height:1;letter-spacing:-.065em;padding-bottom:7px}
-.wordmark .brand-descriptor{font-size:14px;line-height:1.4;color:var(--muted)}
-.brand-stroke{position:absolute;left:0;bottom:-2px;width:100%;height:15px;color:var(--accent);transition:color .2s}
-.brand-stroke path{stroke:currentColor;stroke-width:1.2;fill:none}
-.wordmark:hover .brand-stroke,.wordmark:focus-visible .brand-stroke{color:#a15b70}
+
 .header nav{margin-inline:auto;display:flex;align-items:center;gap:28px}
 .header nav a{font-size:16px;padding-block:12px;position:relative;white-space:nowrap}
 .header nav a::after{content:'';position:absolute;height:1px;background:var(--accent);inset:auto 0 5px;transform:scaleX(0);transform-origin:left;transition:transform .22s}
@@ -116,7 +111,6 @@ legend,.field-label{display:block;font-size:16px;font-weight:500;line-height:1.5
 .success-stitch{display:grid;place-items:center;width:54px;height:54px;border:1px solid var(--accent);border-radius:50%;color:var(--accent)}
 .success-stitch svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .footer{position:relative;isolation:isolate;overflow:clip;display:flex;align-items:center;justify-content:space-between;gap:35px;padding-block:42px;border-top:1px solid var(--rule)}
-.footer .wordmark .brand-name{font-size:52px}
 .footer>p{font-size:14px;line-height:1.65;color:var(--muted)}
 .footer-thread{position:absolute;width:25%;height:1px;bottom:14px;left:36%;background:var(--accent);opacity:.6;pointer-events:none;transform:translateX(var(--shift-x,0px)) rotate(var(--tilt,0deg))}
 .demo-link{padding:10px 0;flex-shrink:0;border:0;border-bottom:1px solid var(--rule);background:transparent;color:var(--muted);font-size:16px;line-height:1.5}
@@ -135,7 +129,7 @@ legend,.field-label{display:block;font-size:16px;font-weight:500;line-height:1.5
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
   /* One continuous needle across page gutters, section gaps, header/footer and dialog space. */
   body{cursor:url('assets/needle-cursor.svg?v=20261030-sync1') 4 31,default}
-  :is(h1,h2,h3,h4,h5,h6,p,output,figcaption,legend,label,.brand-descriptor,.uc-figcaptions,.uc-label,.am-scene-label,.am-stage-caption,.am-step-number){cursor:text}
+  :is(h1,h2,h3,h4,h5,h6,p,output,figcaption,legend,label,.uc-figcaptions,.uc-label,.am-scene-label,.am-stage-caption,.am-step-number){cursor:text}
   :is(a[href],button,[role=button],summary,input[type=range],input[type=radio],input[type=checkbox],select),.uc-garment-options label,.uc-garment-options label *,.request-types label,.request-types label *{cursor:pointer}
   :is(a[href],button,[role=button],summary) *{cursor:inherit}
   :is(input[type=text],input[type=tel],input[type=email],input[type=search],input[type=number],textarea,[contenteditable=true]),.field-label{cursor:text}
@@ -143,14 +137,25 @@ legend,.field-label{display:block;font-size:16px;font-weight:500;line-height:1.5
   .second-life .uc-drag-handle,.second-life .uc-drag-handle *{cursor:ew-resize}
 }
 @media(prefers-reduced-motion:reduce){.contact-magnet-surface{transform:none!important}.hero::before{display:none}}
-@media(max-width:1160px){.header{gap:24px;min-height:96px}.header nav{gap:20px}.header .brand-descriptor{display:none}.wordmark .brand-name{font-size:43px}.hero{gap:30px}.approach-main{gap:35px}.principle-grid{gap:24px}.principle-grid article{grid-template-columns:1fr;gap:12px}.principle-art{height:50px}.footer .brand-descriptor{display:none}}
+@media(max-width:1160px){.header{gap:24px;min-height:96px}.header nav{gap:20px}.hero{gap:30px}.approach-main{gap:35px}.principle-grid{gap:24px}.principle-grid article{grid-template-columns:1fr;gap:12px}.principle-art{height:50px}}
 @media(max-width:960px){.header{gap:18px}.header nav{display:none;position:absolute;top:100%;left:-30px;right:-30px;padding:18px 30px 25px;background:var(--paper);border-bottom:1px solid var(--rule);max-height:calc(100dvh - var(--header-height));overflow:auto}.header nav.is-open{display:flex;align-items:stretch;flex-direction:column;gap:6px}.header nav a{font-size:18px;padding:14px 0}.header-contact{margin-left:auto}.menu-toggle{display:flex;position:relative;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:1px solid var(--rule);background:transparent;flex-shrink:0}.menu-toggle span{position:absolute;width:20px;height:1px;background:var(--ink);transform:translateY(-4px);transition:transform .2s}.menu-toggle span+span{transform:translateY(4px)}.menu-toggle[aria-expanded=true] span{transform:rotate(45deg)}.menu-toggle[aria-expanded=true] span+span{transform:rotate(-45deg)}.hero h1{font-size:clamp(44px,6.5vw,64px)}.contact{gap:40px}.request-types{grid-template-columns:1fr}}
-@media(max-width:760px){.wrap{width:calc(100% - 40px)}.header{min-height:84px;gap:12px}.header .wordmark .brand-name{font-size:clamp(25px,7.8vw,38px)}.header-contact{min-height:44px;padding:10px 13px}.menu-toggle{width:44px;height:44px}.header nav{left:-20px;right:-20px;padding-inline:20px}.hero{grid-template-columns:1fr;gap:30px;padding-block:28px 44px}.hero-copy{padding:0}.hero-copy::before{inset:0}.hero-kicker{margin-bottom:18px}.hero h1{font-size:clamp(36px,8.3vw,54px);line-height:1.16;margin-left:-2px}.hero h1 br{display:initial}.hero-desc{margin-block:20px 24px}.hero-copy>.button{min-height:50px}.approach{padding-block:36px 44px}.approach-main{grid-template-columns:1fr;gap:22px}.approach h2{font-size:clamp(33px,7.7vw,49px)}.approach-main>p{max-width:none}.approach-thread{height:52px;margin-block:14px 20px}.principle-grid{grid-template-columns:1fr;gap:29px}.principle-grid article{grid-template-columns:52px 1fr;gap:18px}.principle-grid h3{font-size:21px}.principle-grid p{font-size:16px;max-width:440px}.contact{grid-template-columns:1fr;gap:36px;padding-block:48px}.contact h2{font-size:clamp(37px,8.7vw,54px)}.contact-description{margin-top:20px}.large-phone{font-size:29px;margin-top:25px}.contact-links{gap:10px}.action-link{gap:12px;padding-inline:14px}.contact-thread{height:65px}.appointment-panel{padding:24px}.appointment-panel>h3{font-size:30px}.request-types{grid-template-columns:1fr 1fr}.footer{flex-wrap:wrap;padding-block:35px;gap:25px}.footer .wordmark .brand-name{font-size:45px}.footer>p{width:100%;order:3}.footer-thread{width:50%;left:25%;bottom:9px}.dialog{padding:38px 24px 28px}.dialog>p{font-size:16px}}
-@media(max-width:390px){.request-types{grid-template-columns:1fr}.contact-links{flex-direction:column;align-items:stretch}.contact-links .action-link{justify-content:space-between}.appointment-panel{padding:22px}.hero h1{font-size:clamp(34px,9.2vw,36px)}.hero .button{gap:18px}.footer .wordmark .brand-name{font-size:39px}}
+@media(max-width:760px){.wrap{width:calc(100% - 40px)}.header{min-height:84px;gap:12px}.header-contact{min-height:44px;padding:10px 13px}.menu-toggle{width:44px;height:44px}.header nav{left:-20px;right:-20px;padding-inline:20px}.hero{grid-template-columns:1fr;gap:30px;padding-block:28px 44px}.hero-copy{padding:0}.hero-copy::before{inset:0}.hero-kicker{margin-bottom:18px}.hero h1{font-size:clamp(36px,8.3vw,54px);line-height:1.16;margin-left:-2px}.hero h1 br{display:initial}.hero-desc{margin-block:20px 24px}.hero-copy>.button{min-height:50px}.approach{padding-block:36px 44px}.approach-main{grid-template-columns:1fr;gap:22px}.approach h2{font-size:clamp(33px,7.7vw,49px)}.approach-main>p{max-width:none}.approach-thread{height:52px;margin-block:14px 20px}.principle-grid{grid-template-columns:1fr;gap:29px}.principle-grid article{grid-template-columns:52px 1fr;gap:18px}.principle-grid h3{font-size:21px}.principle-grid p{font-size:16px;max-width:440px}.contact{grid-template-columns:1fr;gap:36px;padding-block:48px}.contact h2{font-size:clamp(37px,8.7vw,54px)}.contact-description{margin-top:20px}.large-phone{font-size:29px;margin-top:25px}.contact-links{gap:10px}.action-link{gap:12px;padding-inline:14px}.contact-thread{height:65px}.appointment-panel{padding:24px}.appointment-panel>h3{font-size:30px}.request-types{grid-template-columns:1fr 1fr}.footer{flex-wrap:wrap;padding-block:35px;gap:25px}.footer>p{width:100%;order:3}.footer-thread{width:50%;left:25%;bottom:9px}.dialog{padding:38px 24px 28px}.dialog>p{font-size:16px}}
+@media(max-width:390px){.request-types{grid-template-columns:1fr}.contact-links{flex-direction:column;align-items:stretch}.contact-links .action-link{justify-content:space-between}.appointment-panel{padding:22px}.hero h1{font-size:clamp(34px,9.2vw,36px)}.hero .button{gap:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.motion-parallax,.principle-art,.footer-thread{transform:none!important}.hero-copy::before,.principle-grid article::before{display:none}}
 
+
+
 /* Identity sizing for this atelier; navigation and Contacts retain their hit areas. */
-.header .wordmark{min-width:0;max-width:260px;gap:15px}.header .brand-name,.footer .brand-name{font-size:clamp(24px,2.7vw,42px);overflow-wrap:anywhere;line-height:1.12;max-width:245px}.brand-stroke{max-height:15px}.appointment-email{max-width:100%;font-size:18px;overflow-wrap:anywhere}.contact-links .action-link{max-width:100%}.contact-email{overflow-wrap:anywhere}
-@media(max-width:1160px) and (min-width:961px){.header{gap:18px}.header nav{gap:16px}.header .wordmark{max-width:190px}.header .brand-name{font-size:27px;max-width:185px}}
-@media(max-width:760px){.header .wordmark{flex:1 1 auto;max-width:none}.header .wordmark .brand-name{font-size:clamp(16px,4.2vw,20px);max-width:100%;word-break:normal;white-space:normal;line-height:1.16}.header-contact{flex:0 0 auto}.header .menu-toggle{flex:0 0 44px}.footer .brand-name{font-size:30px}.appointment-email{font-size:16px}}
-@media(max-width:360px){.header{gap:6px}.header-contact{padding-inline:10px}}
+
+/* Complete vector wordmarks: fixed letterforms, no line breaking or font fallback. */
+.brand-lockup{display:grid;grid-template-columns:minmax(0,1fr);align-content:center;align-items:start;gap:5px;min-width:0;line-height:1;color:var(--ink)}
+.brand-logo{display:block;width:auto;height:auto;max-width:100%;max-height:44px;object-fit:contain;object-position:left center}
+.brand-caption{display:block;font-family:var(--sans);font-size:14px;font-weight:400;line-height:1.3;letter-spacing:.035em;white-space:nowrap;color:var(--muted)}
+.brand-lockup:hover .brand-logo,.brand-lockup:focus-visible .brand-logo{opacity:.8}
+.header .brand-lockup{flex:0 1 240px;width:240px;max-width:240px}
+.footer .brand-lockup{flex:0 1 260px;width:260px;max-width:min(100%,260px)}
+.footer .brand-logo{max-height:52px}
+.appointment-email{max-width:100%;font-size:18px;overflow-wrap:anywhere}.contact-links .action-link{max-width:100%}.contact-email{overflow-wrap:anywhere}
+@media(max-width:1160px) and (min-width:961px){.header{gap:18px}.header nav{gap:16px}.header .brand-lockup{flex-basis:185px;width:185px;max-width:185px}}
+@media(max-width:760px){.header.wrap{width:calc(100% - 32px)}.header{gap:8px}.header .brand-lockup{flex:1 1 0;width:auto;max-width:250px}.header .brand-logo{max-height:36px}.header-contact{flex:0 0 auto;padding-inline:10px}.header .menu-toggle{flex:0 0 44px}.header nav{left:-16px;right:-16px;padding-inline:16px}.footer .brand-lockup{flex-basis:230px;width:230px;max-width:100%}.appointment-email{font-size:16px}}
+@media(max-width:360px){.header{gap:6px}.header-contact{padding-inline:8px}.brand-caption{letter-spacing:.01em}}
